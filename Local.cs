@@ -8,6 +8,6 @@ namespace Bokningssystem_GruppUpp
 {
     internal class Local
     {
-        // gemensamma metoder och egenskaper. 1:Namn på rummet, Storlek, Maxtid för bokning
+        // gemensamma metoder och egenskaper. 1:Namn på rummet, Storlek, Maxtid för bokning, kapacitet
     }
 }
