@@ -8,7 +8,7 @@ namespace Bokningssystem_GruppUpp
 {
     internal class Hall :Local
     {
-        List<Hall> hallList = new List<Hall>(); //Lista för alla Salar
+        public List<Hall> hallList = new List<Hall>(); //Lista för alla Salar
         
         public string Name { get; set; } //Temporära egenskaper som används tills egenskaper i lokal har skapats
         public double MaxTime { get; set; }
@@ -20,7 +20,7 @@ namespace Bokningssystem_GruppUpp
             MaxTime = maxTime;
             Capacity = capacity;
         }
-        public void NewHall(List<Hall> hallList) //9.Metod som skapar nya salar *Hannes gjort
+        public void NewHall() //9.Metod som skapar nya salar *Hannes gjort
         {
             Console.WriteLine("Skriv Namnet av salen du vill skapa");
             string hallName = Console.ReadLine().ToLower();
