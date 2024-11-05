@@ -25,7 +25,7 @@ namespace Bokningssystem_GruppUpp
             Console.WriteLine("Skriv Namnet av salen du vill skapa");
             string hallName = Console.ReadLine().ToLower();
             bool found = false;
-            for (int i = 0; i < hallList.Count; i++)    //7.kollar igenom listan och ser till att *Hannes gjort
+            for (int i = 0; i < hallList.Count; i++)    //7.kollar igenom listan och ser till att en sall med namnet redan existerar *Hannes gjort
             {
                 if (hallList[i].Name == hallName)
                 {
