@@ -38,7 +38,7 @@ namespace Bokningssystem_GruppUpp
         // testning
         public string? Roomscreated { get; set; }
         // konstruktor för att skapa rum senare
-        public Local(string roomscreated)
+        public Local(string roomscreated) 
         {
             Roomscreated = roomscreated;
         }
@@ -182,7 +182,8 @@ namespace Bokningssystem_GruppUpp
                     }
                     Console.WriteLine("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
                     Console.ReadKey();
-                    searchYear = true;
+                    searchYear = true; 
+                    break;
                 }
                 else
                 {

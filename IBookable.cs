@@ -13,7 +13,5 @@ namespace Bokningssystem_GruppUpp
         void UpdateBooking();
         void RemoveBooking();
         void SortByYear();
-
-
     }
 }
