@@ -34,7 +34,8 @@ namespace Bokningssystem_GruppUpp
         }
 
         // lista för rummen som vi kommer skapa senare, kan ta bort den men använde för att testa koden
-        public List<Local> Rooms = new List<Local>();
+        public static List<Local> Rooms = new List<Local>(); //Obs! Måste vara static 
+       
         // testning
         public string? Roomscreated { get; set; }
         // konstruktor för att skapa rum senare
@@ -67,10 +68,10 @@ namespace Bokningssystem_GruppUpp
                 // ber användaren ange sal eller grupprum och sparar det i en sträng
                 Console.WriteLine("Vilken sal/grupprum vill du boka?");
                 string room = Console.ReadLine() ?? "";
-                // Kollar att rummet finns i listan
+                // Kollar att rummet finns i listan 
 
-                var roomFound = Rooms.FirstOrDefault(a => a.Roomscreated == room);
-
+                var roomFound = Rooms.FirstOrDefault(a => a.Roomscreated == room); 
+                  
                 // om variabeln är null kommer användaren få ett felmeddelande och börja om
                 if (roomFound == null)
                 {
@@ -158,7 +159,7 @@ namespace Bokningssystem_GruppUpp
             bool searchYear = false;
 
             while (searchYear != true)
-            {
+            { 
                 Console.Write("Ange bokningsår. Obs! Endast år t.ex 2022: ");
                 string? stringYearToSearch = Console.ReadLine();
 
@@ -192,6 +193,7 @@ namespace Bokningssystem_GruppUpp
                     Console.SetCursorPosition(50, 10);
                     Console.WriteLine("Endast siffror tack!");
                     Thread.Sleep(1200);
+                    Console.Clear();
                 } 
             }
             //Felhantering om ej tal eller tom sträng.  

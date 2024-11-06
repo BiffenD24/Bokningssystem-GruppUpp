@@ -5,8 +5,6 @@
         static void Main(string[] args)
         {
             Console.Clear(); 
-            //Instansen används för att komma åt metoderna. 
-            //Local local = new Local();
             string? menuChoice = ""; 
             bool quitBooking = false;
 
@@ -76,6 +74,7 @@
             }
 
             //Programmet avslutas här.  
+            Console.Clear();
             Console.SetCursorPosition(50, 15);
             Console.Write("Tack för besöket!\n\n\n\n\n\n");
             Thread.Sleep(5000);
