@@ -152,9 +152,81 @@ namespace Bokningssystem_GruppUpp
             throw new NotImplementedException();
         }
 
+        // Metod för att ta bort bokningar. *Dennis gjort.
         public void RemoveBooking()
         {
-            throw new NotImplementedException();
+            bool removebooked = true;
+            while (removebooked)
+            {
+                Console.Clear();
+
+                // Ber användaren ange namn och sparar det i en sträng
+                Console.WriteLine("Vilken bokning vill du ta bort?");
+                Console.WriteLine("Ange namn som du bokat med");
+                String? name = Console.ReadLine() ?? "";
+
+                // ber användaren ange vilken sal den bokat och sparar det i en sträng
+                Console.WriteLine("Ange vilken sal du bokat");
+                String? room = Console.ReadLine() ?? "";
+
+                // ber användaren ange från vilken tid man bokat och i vilket format det ska vara
+                Console.WriteLine("Från vilken tid har du bokat? Ange År/Månad/Dag Timme/Minut");
+                // sparar det i en bool så om parsningen lyckas skickas from tillbaka annars sätts fromtime bool till false
+                var fromtime = DateTime.TryParse(Console.ReadLine(), out DateTime from);
+
+                // om parsningen misslyckades körs denna kod
+                if (fromtime == false)
+                {
+                    // skriver ut felmeddelande och ber användaren försöka igen
+                    Console.WriteLine("Ange rätt format, Försök igen");
+                    Console.WriteLine("Tryck valfri knapp för att försöka igen");
+                    Console.ReadLine();
+                    // continue för att gå tillbaka till början av loopen
+                    continue;
+                }
+
+                // ber användaren ange till vilken tid den bokat
+                Console.WriteLine("Till vilken tid har du bokat? Ange År/Månad/Dag Timme:Minut");
+                // sparar i en bool. Om parsningen lyckas skickas variabeln to ut annars blir bool false
+                var toTime = DateTime.TryParse(Console.ReadLine(), out DateTime to);
+                // om parsningen misslyckades
+                if (toTime == false)
+                {
+                    // skriver ut felmeddelande
+                    Console.WriteLine("Amge rätt format, Försök igen");
+                    Console.WriteLine("Tryck valfri knapp för att försöka igen");
+                    Console.ReadLine();
+                    continue;
+
+                }
+
+                // letar i listan efter det som användaren angivit
+                var bookingToRemove = BookingList.FirstOrDefault(b => b.Room == room && b.Name == name && b.From == from && b.To == to);
+                // om variabeln inte är lika med null alltså att den hittade bokningen, kommer denna kod att köras
+                if (bookingToRemove != null)
+                {
+                    // bokningen tas bort från listan
+                    BookingList.Remove(bookingToRemove);
+                    // skriver ut till användaren
+                    Console.WriteLine("Bokningen har tagits bort!");
+                    Console.WriteLine("Tryck valfri knapp för att gå tillbaka");
+                    Console.ReadLine();
+                    Console.Clear();
+                    // sätter loopen till false så att den avslutas
+                    removebooked = false;
+
+                }
+                // om bokningen inte hittades
+                else
+                {
+                    // skriver ut felmeddelande till användaren och går tillbaka till toppen av loopen
+                    Console.WriteLine("Bokningen hittades inte, Vänligen försök igen");
+                    Console.WriteLine("Tryck valfri knapp för att gå tillbaka");
+                    Console.ReadLine();
+                    continue;
+                    
+                }
+            }
         }
 
         public void SortByYear()
