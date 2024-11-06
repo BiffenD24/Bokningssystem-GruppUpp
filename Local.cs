@@ -34,12 +34,16 @@ namespace Bokningssystem_GruppUpp
         }
         // lista för rummen som vi kommer skapa senare, kan ta bort den men använde för att testa koden
         public List<Local> Rooms = new List<Local>();
-        // testning
+        // Egenskaper för dom skapade salar och grupprum
         public string? Roomscreated { get; set; }
+        public double? MaxTime { get; set; }
+        public int? Capacity { get; set; }
         // konstruktor för att skapa rum senare
-        public Local(string roomscreated)
+        public Local(string roomscreated,double maxTime,int capacity)
         {
             Roomscreated = roomscreated;
+            MaxTime = maxTime;
+            Capacity = capacity;
         }
 
         // Metod för att göra ny bokning * Dennis gjort
