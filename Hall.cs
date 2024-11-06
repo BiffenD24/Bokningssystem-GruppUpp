@@ -25,6 +25,7 @@ namespace Bokningssystem_GruppUpp
                     continue;
                 }
                 //7.kollar igenom listan och ser om en sall med namnet redan existerar *Hannes gjort
+                bool found = false;
                 for (int i = 0; i < Rooms.Count; i++)    
                 {
                     if (Rooms[i].Roomscreated == roomName)
@@ -33,10 +34,13 @@ namespace Bokningssystem_GruppUpp
                         Console.WriteLine($"ERROR!\nDet finns redan en sal med namnet {roomName}");
                         Console.WriteLine("Tryck ENTER för att fortsätta");
                         Console.ReadKey();
-                        continue;
+                        found = true;
                     }
                 }
-                
+                if (found == true)
+                {
+                    continue;
+                }
                 Console.WriteLine("Skriv in den maximala tiden du får boka den hära salen");
                 string roomTstr = Console.ReadLine();
                 // Kollar om stringen är tom eller null och ger felmedelande och användaren får börja om, om sant
