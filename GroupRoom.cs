@@ -26,7 +26,7 @@ namespace Bokningssystem_GruppUpp
                 //7.kollar igenom listan och ser om ett grupprum med namnet redan existerar *Hannes gjort
                 for (int i = 0; i < Rooms.Count; i++)    
                 {
-                    if (Rooms[i].Name == roomName)
+                    if (Rooms[i].Roomscreated == roomName)
                     {
                         Console.WriteLine($"ERROR!\nDet finns redan ett Grupprum med namnet {roomName}");
                         Console.WriteLine("Tryck ENTER för att fortsätta");

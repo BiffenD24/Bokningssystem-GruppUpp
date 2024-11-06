@@ -27,7 +27,7 @@ namespace Bokningssystem_GruppUpp
                 //7.kollar igenom listan och ser om en sall med namnet redan existerar *Hannes gjort
                 for (int i = 0; i < Rooms.Count; i++)    
                 {
-                    if (Rooms[i].Name == roomName)
+                    if (Rooms[i].Roomscreated == roomName)
                     {
                         // om rummet redan existerar kommer det skrivas ut ett felmeddelande och användaren får börja om
                         Console.WriteLine($"ERROR!\nDet finns redan en sal med namnet {roomName}");
