@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Bokningssystem_GruppUpp
 {
-    public class Local : IBookable
+    public class Local : IBookable 
     {
-        // properties för att spara bokningarna
+        // properties för att spara bokningarna  
         public string? Name { get; set; }
-        public string? Room { get; set; }
+        public string? Room { get; set; } 
         public DateTime From { get; set; }
         public DateTime To { get; set; }
         public TimeSpan LengthOfBooking { get; set; }
@@ -28,11 +28,11 @@ namespace Bokningssystem_GruppUpp
             To = to;
             LengthOfBooking = length;
         }
-        
         public Local()
         {
 
         }
+
         // lista för rummen som vi kommer skapa senare, kan ta bort den men använde för att testa koden
         public List<Local> Rooms = new List<Local>();
         // testning
@@ -44,11 +44,11 @@ namespace Bokningssystem_GruppUpp
         }
 
         // Metod för att göra ny bokning * Dennis gjort
-        public void NewBookable()
+        public static void NewBookable()
         {
             // loop för att hålla igång programmet tills användaren har angivit rätt uppgifter
             while (true)
-            {
+            {   
                 Console.Clear();           
                 // välkommnar användaren
                 Console.WriteLine("Välkommen till att boka sal/grupprum");
@@ -68,7 +68,9 @@ namespace Bokningssystem_GruppUpp
                 Console.WriteLine("Vilken sal/grupprum vill du boka?");
                 string room = Console.ReadLine() ?? "";
                 // Kollar att rummet finns i listan
+
                 var roomFound = Rooms.FirstOrDefault(a => a.Roomscreated == room);
+
                 // om variabeln är null kommer användaren få ett felmeddelande och börja om
                 if (roomFound == null)
                 {
@@ -125,7 +127,7 @@ namespace Bokningssystem_GruppUpp
         }
 
         //Metod som skriver ut alla bokningar. *Moses gjort.  
-        public void PrintBookings()
+        public static void PrintBookings()
         {
             Console.Clear();
             Console.SetCursorPosition(50, 5);
@@ -139,18 +141,18 @@ namespace Bokningssystem_GruppUpp
             Console.ReadKey();
         }     
 
-        public void UpdateBooking()
+        public static void UpdateBooking()
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveBooking()
+        public static void RemoveBooking()
         {
             throw new NotImplementedException();
         }
 
         //Metoden som listar bokningar från ett specifikt år. *Moses gjort. 
-        public void SortByYear()
+        public static void SortByYear()
         {
             Console.Clear();
             bool searchYear = false;

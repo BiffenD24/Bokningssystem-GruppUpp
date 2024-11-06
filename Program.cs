@@ -4,8 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.Clear();
-            Local local = new Local();
+            Console.Clear(); 
+            //Instansen används för att komma åt metoderna. 
+            //Local local = new Local();
             string? menuChoice = ""; 
             bool quitBooking = false;
 
@@ -31,12 +32,12 @@
                 Console.Write("U = Uppdatera en bokning.\n");
                 Console.SetCursorPosition(40, 10);
                 Console.Write("X = Avsluta.\n");
-                menuChoice = Console.ReadLine();
+                menuChoice = Console.ReadLine();    
 
                 if (menuChoice == "B" || menuChoice == "b")
                 {
                     Console.Clear();
-                    SortByYear();
+                    Local.SortByYear();  
                 }
                 else if (menuChoice == "E" || menuChoice == "e")
                 {
@@ -46,7 +47,7 @@
                 else if (menuChoice == "L" || menuChoice == "l")
                 {
                     Console.Clear();
-                    local.PrintBookings();  
+                    Local.PrintBookings();   
                 }
                 else if (menuChoice == "N" || menuChoice == "n")
                 {
@@ -56,17 +57,17 @@
                 else if (menuChoice == "S" || menuChoice == "s")
                 {
                     Console.Clear();
-                    local.NewBookable();
-                }
+                    Local.NewBookable();
+                } 
                 else if (menuChoice == "T" || menuChoice == "t")
                 {
                     Console.Clear();
-                    local.RemoveBooking(); 
+                    Local.RemoveBooking(); 
                 }
                 else if (menuChoice == "U" || menuChoice == "u")
                 {
                     Console.Clear();
-                    local.UpdateBooking(); 
+                    Local.UpdateBooking(); 
                 }
                 else if (menuChoice == "X" || menuChoice == "x")
                 {
