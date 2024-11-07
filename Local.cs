@@ -111,7 +111,7 @@ namespace Bokningssystem_GruppUpp
                 // if-sats för att kolla om det redan finns en bokning på samma rum och tid. Om det finns det kommer användaren få ett felmeddelande och börja om bokningen
                 if (BookingList.Any(b => b.Room == room && (from < b.To && to > b.From)))
                 {
-                    Console.WriteLine("Rummet är bokat på din önskade tid\nTryck valfri knapp för att börja om");
+                    Console.WriteLine("Rummet är inte tillgänglig den tiden \nTryck valfri knapp för att börja om");
                     Console.ReadLine();
                     continue;
                 }
@@ -245,14 +245,8 @@ namespace Bokningssystem_GruppUpp
                     Console.Write("Nedan är dina booknigar för år " + yearTosearch + ".");
                     Console.SetCursorPosition(0, 7); 
 
-                    //var byYear = BookingList.GroupBy(x => x.From.Year); 
                     foreach (Local yearBookings in BookingList)
                     {
-                        //int year = yearBookings.From.Year;
-                        //if (year != yearTosearch)
-                        //{
-                        //    continue;
-                        //}
                         int indexYear;
                         for (int indexYearToFind = 0; indexYearToFind < BookingList.Count; indexYearToFind++)
                         {
@@ -262,7 +256,7 @@ namespace Bokningssystem_GruppUpp
                                 Console.WriteLine("Rum: " + BookingList[indexYearToFind].Room + " är bokat från: " + BookingList[indexYearToFind].From + " till: " + BookingList[indexYearToFind].To + ".");  
                                
                             }
-                            else{ Console.WriteLine("Vi har inga bokningar för år " + yearTosearch); }  
+                            else {Console.WriteLine("Vi har inga bokningar för år " + yearTosearch); break;}   
                         }
                         break;
 
