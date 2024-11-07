@@ -39,7 +39,7 @@ namespace Bokningssystem_GruppUpp
         public double? MaxTime { get; set; }
         public int? Capacity { get; set; }
         // konstruktor för att skapa rum senare
-        public Local(string roomscreated,double maxTime,int capacity)
+        public Local(string roomscreated, double maxTime, int capacity)
         {
             Roomscreated = roomscreated;
             MaxTime = maxTime;
