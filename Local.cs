@@ -34,7 +34,7 @@ namespace Bokningssystem_GruppUpp
         }
 
         // lista för rummen som vi kommer skapa senare, kan ta bort den men använde för att testa koden
-        public static List<Local> Rooms = new List<Local>(); //Obs! Måste vara static 
+        public List<Local> Rooms = new List<Local>(); //Obs! Måste vara static 
        
         // testning
         public string? Roomscreated { get; set; }
