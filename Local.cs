@@ -132,13 +132,12 @@ namespace Bokningssystem_GruppUpp
         //Metod som skriver ut alla bokningar. *Moses gjort.  
         public static void PrintBookings()
         {
-            Console.Clear();
             Console.SetCursorPosition(50, 5);
             Console.Write("NEDAN ÄR DINA BOKNINGAR");
             Console.SetCursorPosition(0, 7);
-            foreach (Local allBookings in BookingList)
+            foreach (Local s in BookingList)
             {
-                Console.WriteLine(allBookings); 
+                Console.Write($"Namn:{s.Name}\nRum:{s.Room}\nFrån:{s.From} Till:{s.To}\nLängd:{s.LengthOfBooking}\n");
             }
             Console.Write("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
             Console.ReadKey();
