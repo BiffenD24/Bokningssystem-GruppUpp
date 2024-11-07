@@ -10,7 +10,7 @@ namespace Bokningssystem_GruppUpp
     public class Local : IBookable 
     {
         // properties för att spara bokningarna  
-        public string? Name { get; set; }
+        public string? Name { get; set; } 
         public string? Room { get; set; } 
         public DateTime From { get; set; }
         public DateTime To { get; set; }
