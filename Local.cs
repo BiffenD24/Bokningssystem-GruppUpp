@@ -150,7 +150,7 @@ namespace Bokningssystem_GruppUpp
         }
 
         // Metod för att ta bort bokningar. *Dennis gjort.
-        public void RemoveBooking()
+        public static void RemoveBooking()
         {
             bool removebooked = true;
             while (removebooked)
