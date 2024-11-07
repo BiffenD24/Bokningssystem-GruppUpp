@@ -138,7 +138,7 @@ namespace Bokningssystem_GruppUpp
             Console.SetCursorPosition(0, 7);
             foreach (Local allBookings in BookingList)
             {
-                Console.Write(allBookings);
+                Console.WriteLine(allBookings); 
             }
             Console.Write("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
             Console.ReadKey();
@@ -240,22 +240,32 @@ namespace Bokningssystem_GruppUpp
                 if (IfNotANumber(stringYearToSearch))
                 {
                     Console.Clear();
-                    byte yearTosearch = Convert.ToByte(stringYearToSearch);
+                    int yearTosearch = Convert.ToInt32(stringYearToSearch);
                     Console.SetCursorPosition(50, 5);
                     Console.Write("Nedan är dina booknigar för år " + yearTosearch + ".");
-                    Console.SetCursorPosition(0, 7);
+                    Console.SetCursorPosition(0, 7); 
 
+                    //var byYear = BookingList.GroupBy(x => x.From.Year); 
                     foreach (Local yearBookings in BookingList)
                     {
+                        //int year = yearBookings.From.Year;
+                        //if (year != yearTosearch)
+                        //{
+                        //    continue;
+                        //}
                         int indexYear;
                         for (int indexYearToFind = 0; indexYearToFind < BookingList.Count; indexYearToFind++)
                         {
                             if (BookingList[indexYearToFind].From.Year == yearTosearch)
                             {
                                 indexYear = indexYearToFind;
-                                Console.WriteLine(BookingList[indexYearToFind]);
+                                Console.WriteLine("Rum: " + BookingList[indexYearToFind].Room + " är bokat från: " + BookingList[indexYearToFind].From + " till: " + BookingList[indexYearToFind].To + ".");  
+                               
                             }
+                            else{ Console.WriteLine("Vi har inga bokningar för år " + yearTosearch); }  
                         }
+                        break;
+
                     }
                     Console.WriteLine("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
                     Console.ReadKey();
