@@ -34,14 +34,17 @@ namespace Bokningssystem_GruppUpp
         }
 
         // lista för rummen som vi kommer skapa senare, kan ta bort den men använde för att testa koden
-        public static List<Local> Rooms = new List<Local>(); //Obs! Måste vara static 
-       
-        // testning
+        public static List<Local> Rooms = new List<Local>();
+        // Egenskaper för dom skapade salar och grupprum
         public string? Roomscreated { get; set; }
+        public double? MaxTime { get; set; }
+        public int? Capacity { get; set; }
         // konstruktor för att skapa rum senare
-        public Local(string roomscreated) 
+        public Local(string roomscreated,double maxTime,int capacity) 
         {
             Roomscreated = roomscreated;
+            MaxTime = maxTime;
+            Capacity = capacity;
         }
 
         // Metod för att göra ny bokning * Dennis gjort
@@ -147,7 +150,7 @@ namespace Bokningssystem_GruppUpp
             throw new NotImplementedException();
         }
 
-        public static void RemoveBooking()
+        public void RemoveBooking()
         {
             throw new NotImplementedException();
         }
