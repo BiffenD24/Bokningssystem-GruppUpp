@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 
 namespace Bokningssystem_GruppUpp
 {
-    public class Local : IBookable
+    public class Local : IBookable 
     {
-        // properties för att spara bokningarna
+        // properties för att spara bokningarna  
         public string? Name { get; set; }
-        public string? Room { get; set; }
+        public string? Room { get; set; } 
         public DateTime From { get; set; }
         public DateTime To { get; set; }
         public TimeSpan LengthOfBooking { get; set; }
 
-        // lista av bokningarna
-        public List<Local> BookingList = new List<Local>();
+        // lista av bokningarna. OBS! Den måste vara statisk om sort by year metod ska funka. 
+        public static List<Local> BookingList = new List<Local>(); 
+
         // konstruktor som tar in värden från användaren
         public Local(string name, string room, DateTime from, DateTime to, TimeSpan length)
         {
@@ -27,7 +28,6 @@ namespace Bokningssystem_GruppUpp
             To = to;
             LengthOfBooking = length;
         }
-        
         public Local()
         {
 
@@ -47,11 +47,11 @@ namespace Bokningssystem_GruppUpp
         }
 
         // Metod för att göra ny bokning * Dennis gjort
-        public void NewBookable()
+        public static void NewBookable()
         {
             // loop för att hålla igång programmet tills användaren har angivit rätt uppgifter
             while (true)
-            {
+            {   
                 Console.Clear();           
                 // välkommnar användaren
                 Console.WriteLine("Välkommen till att boka sal/grupprum");
@@ -70,8 +70,10 @@ namespace Bokningssystem_GruppUpp
                 // ber användaren ange sal eller grupprum och sparar det i en sträng
                 Console.WriteLine("Vilken sal/grupprum vill du boka?");
                 string room = Console.ReadLine() ?? "";
-                // Kollar att rummet finns i listan
-                var roomFound = Rooms.FirstOrDefault(a => a.Roomscreated == room);
+                // Kollar att rummet finns i listan 
+
+                var roomFound = Rooms.FirstOrDefault(a => a.Roomscreated == room); 
+                  
                 // om variabeln är null kommer användaren få ett felmeddelande och börja om
                 if (roomFound == null)
                 {
@@ -124,30 +126,25 @@ namespace Bokningssystem_GruppUpp
                     // avslutar loopen
                     break;
                 }
-
-
             }
-           
-            
-             
-
-
         }
+
         //Metod som skriver ut alla bokningar. *Moses gjort.  
-        public void PrintBookings()
+        public static void PrintBookings()
         {
             Console.Clear();
+            Console.SetCursorPosition(50, 5);
             Console.Write("NEDAN ÄR DINA BOKNINGAR");
+            Console.SetCursorPosition(0, 7);
             foreach (Local allBookings in BookingList)
             {
                 Console.Write(allBookings);
             }
             Console.Write("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
             Console.ReadKey();
-
         }     
 
-        public void UpdateBooking()
+        public static void UpdateBooking()
         {
             throw new NotImplementedException();
         }
@@ -229,9 +226,56 @@ namespace Bokningssystem_GruppUpp
             }
         }
 
-        public void SortByYear()
+        //Metoden som listar bokningar från ett specifikt år. *Moses gjort. 
+        public static void SortByYear()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            bool searchYear = false;
+
+            while (searchYear != true)
+            { 
+                Console.Write("Ange bokningsår. Obs! Endast år t.ex 2022: ");
+                string? stringYearToSearch = Console.ReadLine();
+
+                if (IfNotANumber(stringYearToSearch))
+                {
+                    Console.Clear();
+                    byte yearTosearch = Convert.ToByte(stringYearToSearch);
+                    Console.SetCursorPosition(50, 5);
+                    Console.Write("Nedan är dina booknigar för år " + yearTosearch + ".");
+                    Console.SetCursorPosition(0, 7);
+
+                    foreach (Local yearBookings in BookingList)
+                    {
+                        int indexYear;
+                        for (int indexYearToFind = 0; indexYearToFind < BookingList.Count; indexYearToFind++)
+                        {
+                            if (BookingList[indexYearToFind].From.Year == yearTosearch)
+                            {
+                                indexYear = indexYearToFind;
+                                Console.WriteLine(BookingList[indexYearToFind]);
+                            }
+                        }
+                    }
+                    Console.WriteLine("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
+                    Console.ReadKey();
+                    searchYear = true; 
+                    break;
+                }
+                else
+                {
+                    Console.SetCursorPosition(50, 10);
+                    Console.WriteLine("Endast siffror tack!");
+                    Thread.Sleep(1200);
+                    Console.Clear();
+                } 
+            }
+            //Felhantering om ej tal eller tom sträng.  
+            static bool IfNotANumber(string? userInput)
+            {
+                double numberHandler;
+                return double.TryParse(userInput, out numberHandler);
+            }
         }
     }
 
