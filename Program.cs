@@ -50,6 +50,7 @@
                 else if (menuChoice == "N" || menuChoice == "n")
                 {
                     Console.Clear();
+                    Hall.NewHall(); 
                     //OBS Lägg in punkt 9 här. 
                 }
                 else if (menuChoice == "S" || menuChoice == "s")

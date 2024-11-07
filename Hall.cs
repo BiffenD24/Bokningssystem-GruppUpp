@@ -10,7 +10,7 @@ namespace Bokningssystem_GruppUpp
     internal class Hall :Local
     {
         //9.Metod som skapar nya salar *Hannes gjort
-        public void NewHall() 
+        public static void NewHall() 
         {
             while (true)
             {
