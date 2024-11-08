@@ -6,7 +6,8 @@ namespace Bokningssystem_GruppUpp
     {
         static void Main(string[] args)
         {
-            if(File.Exists("Rooms.json"))
+            //if sats som kollar om filen finns och om den gör det så deserialiserar den
+            if (File.Exists("Rooms.json"))
             {
                 Local.Deserialize();
             }

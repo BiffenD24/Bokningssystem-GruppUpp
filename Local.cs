@@ -281,6 +281,7 @@ namespace Bokningssystem_GruppUpp
                 return double.TryParse(userInput, out numberHandler);
             }
         }
+        //Metod som tar all text i json filen och deserialiserar den till en lista. *Hannes gjort.
         public static void Deserialize()
         {
             Rooms = JsonSerializer.Deserialize<List<Local>>(File.ReadAllText("Rooms.json"));
