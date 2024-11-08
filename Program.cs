@@ -1,9 +1,15 @@
-﻿namespace Bokningssystem_GruppUpp
+﻿using System.Text.Json;
+
+namespace Bokningssystem_GruppUpp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            if(File.Exists("Rooms.json"))
+            {
+                Local.Deserialize();
+            }
             Console.Clear(); 
             string? menuChoice = ""; 
             bool quitBooking = false;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Bokningssystem_GruppUpp
@@ -279,6 +280,10 @@ namespace Bokningssystem_GruppUpp
                 double numberHandler;
                 return double.TryParse(userInput, out numberHandler);
             }
+        }
+        public static void Deserialize()
+        {
+            Rooms = JsonSerializer.Deserialize<List<Local>>(File.ReadAllText("Rooms.json"));
         }
     }
 
