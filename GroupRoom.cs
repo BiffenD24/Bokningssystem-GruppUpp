@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Bokningssystem_GruppUpp
@@ -9,7 +10,7 @@ namespace Bokningssystem_GruppUpp
     internal class GroupRoom :Local
     {
         //9.skapar ett nytt Grupprum *Hannes gjort
-        public void NewGroupRoom()
+        public static void NewGroupRoom()
         {
             while (true)
             {
@@ -65,6 +66,9 @@ namespace Bokningssystem_GruppUpp
                 
                 //Lägger till all info i Rooms listan
                 Rooms.Add(new(roomName, roomTime, roomCapacity));
+                //Sparar listan i en json fil
+                string text = JsonSerializer.Serialize(Rooms);
+                File.WriteAllText("Rooms.json", text);
                 break;
 
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -67,6 +68,9 @@ namespace Bokningssystem_GruppUpp
                 
                 //Lägger till all info i Rooms listan
                 Rooms.Add(new(roomName, roomTime, roomCapacity));
+                //Sparar listan i en json fil
+                string text = JsonSerializer.Serialize(Rooms);
+                File.WriteAllText("Rooms.json", text);
                 break;
                 
             }
