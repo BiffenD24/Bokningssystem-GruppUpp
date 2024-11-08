@@ -28,7 +28,7 @@ namespace Bokningssystem_GruppUpp
                 Console.SetCursorPosition(40, 5);
                 Console.Write("L = Lista alla bokningar.\n");
                 Console.SetCursorPosition(40, 6);
-                Console.Write("N = Skapa nya salar.\n");
+                Console.Write("N = Skapa ny sal eller grupprum.\n");
                 Console.SetCursorPosition(40, 7);
                 Console.Write("S = Skapa ny bokningar.\n");
                 Console.SetCursorPosition(40, 8);
@@ -47,7 +47,7 @@ namespace Bokningssystem_GruppUpp
                 else if (menuChoice == "E" || menuChoice == "e")
                 {
                     Console.Clear();
-                    //OBS Lägg in punkt 8 här. 
+                    //OBS Lägg in punkt 6 här. 
                 }
                 else if (menuChoice == "L" || menuChoice == "l")
                 {
@@ -56,9 +56,32 @@ namespace Bokningssystem_GruppUpp
                 }
                 else if (menuChoice == "N" || menuChoice == "n")
                 {
-                    Console.Clear();
-                    Hall.NewHall(); 
-                    //OBS Lägg in punkt 9 här. 
+                    bool end = false;
+                    //en loop som körs tills man skapar en sal eller grupprum
+                    while (end == false)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Vill du skapa en Sal eller ett Grupprum");
+                        string choice = Console.ReadLine().ToLower();
+                        if (choice == "sal")
+                        {
+                            Console.Clear();
+                            Hall.NewHall();
+                            end = true;
+                        }
+                        else if (choice == "grupprum")
+                        {
+                            Console.Clear();
+                            GroupRoom.NewGroupRoom();
+                            end = true;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("ERROR! Felaktit svar \nTryck ENTER för att försöka igen");
+                            Console.ReadKey();
+                        }
+                    }
                 }
                 else if (menuChoice == "S" || menuChoice == "s")
                 {
