@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -136,18 +137,20 @@ namespace Bokningssystem_GruppUpp
             Console.SetCursorPosition(50, 5);
             Console.Write("NEDAN ÄR DINA BOKNINGAR");
             Console.SetCursorPosition(0, 7);
-            foreach (Local s in BookingList)
+            foreach (Local bookingsToPrint in BookingList)
             {
-                Console.Write($"Namn:{s.Name}\nRum:{s.Room}\nFrån:{s.From} Till:{s.To}\nLängd:{s.LengthOfBooking}\n");
+                Console.Write($"Namn:{bookingsToPrint.Name}\nRum:{bookingsToPrint.Room}\nFrån:{bookingsToPrint.From} Till:{bookingsToPrint.To}\nLängd:{bookingsToPrint.LengthOfBooking}\n");
             }
             Console.Write("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
             Console.ReadKey();
-        }     
-
-        public static void UpdateBooking()
-        {
-            throw new NotImplementedException();
         }
+
+        //public static void UpdateBooking()
+        //{
+
+        //    throw new NotImplementedException();
+
+        //}
 
         // Metod för att ta bort bokningar. *Dennis gjort.
         public static void RemoveBooking()
@@ -226,45 +229,71 @@ namespace Bokningssystem_GruppUpp
             }
         }
 
-        //Metoden som listar bokningar från ett specifikt år. *Moses gjort. 
+        //Metoden som listar bokningar från ett specifikt år. *Moses gjort.  
         public static void SortByYear()
         {
             Console.Clear();
             bool searchYear = false;
+            bool yearFound = false; //Om året hittas eller inte. 
 
             while (searchYear != true)
             { 
                 Console.Write("Ange bokningsår. Obs! Endast år t.ex 2022: ");
                 string? stringYearToSearch = Console.ReadLine();
-
+                bool isEmpty = !BookingList.Any(); //Kolla om bokningslistan är tom.
+             
                 if (IfNotANumber(stringYearToSearch))
                 {
                     Console.Clear();
                     int yearTosearch = Convert.ToInt32(stringYearToSearch);
-                    Console.SetCursorPosition(50, 5);
-                    Console.Write("Nedan är dina booknigar för år " + yearTosearch + ".");
-                    Console.SetCursorPosition(0, 7); 
 
-                    foreach (Local yearBookings in BookingList)
+                    if (isEmpty)
                     {
-                        int indexYear;
-                        for (int indexYearToFind = 0; indexYearToFind < BookingList.Count; indexYearToFind++)
-                        {
-                            if (BookingList[indexYearToFind].From.Year == yearTosearch)
-                            {
-                                indexYear = indexYearToFind;
-                                Console.WriteLine("Rum: " + BookingList[indexYearToFind].Room + " är bokat från: " + BookingList[indexYearToFind].From + " till: " + BookingList[indexYearToFind].To + ".");  
-                               
-                            }
-                            else {Console.WriteLine("Vi har inga bokningar för år " + yearTosearch); break;}   
-                        }
+                        Console.SetCursorPosition(50, 5);
+                        Console.Write("Bokningslistan är tom. Skapa bokningar först!");
+                        Console.SetCursorPosition(0, 7);
+                        Console.Write("\n\n\t\t\t\t\t\t\tTryck valfri knapp för att fortsätta...");
+                        Console.ReadKey();
                         break;
-
                     }
-                    Console.WriteLine("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
-                    Console.ReadKey();
-                    searchYear = true; 
-                    break;
+                    else 
+                    {
+                        Console.SetCursorPosition(50, 5);
+                        Console.Write("Nedan är dina boknigar för år " + yearTosearch + ".");
+                        Console.SetCursorPosition(0, 7);
+
+                        foreach (Local yearBookings in BookingList)
+                        {
+                            int indexYear;
+                            for (int indexYearToFind = 0; indexYearToFind < BookingList.Count; indexYearToFind++)
+                            {
+                                if (BookingList[indexYearToFind].From.Year == yearTosearch)
+                                {
+                                    indexYear = indexYearToFind;
+                                    Console.WriteLine("Rum: " + BookingList[indexYearToFind].Room + " är bokat från: " + BookingList[indexYearToFind].From + " till: " + BookingList[indexYearToFind].To + ".");
+                                    yearFound = true;
+                                    continue; //Fortsätter till nästa if sats.  
+                                }
+                                else if (BookingList[indexYearToFind].To.Year == yearTosearch)
+                                {
+                                    indexYear = indexYearToFind;
+                                    Console.WriteLine("Rum: " + BookingList[indexYearToFind].Room + " är bokat från: " + BookingList[indexYearToFind].From + " till: " + BookingList[indexYearToFind].To + ".");
+                                    yearFound = true;
+                                }
+                                else if (yearFound == false)
+                                {
+                                    Console.WriteLine("Vi har inga bokningar för år " + yearTosearch);
+                                    break;
+                                }
+                            }
+                            break;
+
+                        }
+                        Console.WriteLine("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
+                        Console.ReadKey();
+                        searchYear = true;
+                        break;
+                    }
                 }
                 else
                 {
