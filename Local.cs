@@ -146,7 +146,80 @@ namespace Bokningssystem_GruppUpp
 
         public static void UpdateBooking()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Skriv namnet på rummet du vill uppdatera bokningen på");
+            string RName = Console.ReadLine().ToLower();
+            Console.WriteLine("Skriv namnet av personen på bokningen du vill uppdatera");
+            string NName = Console.ReadLine().ToLower();
+            for (int i = 0; i < BookingList.Count; i++)
+            {
+                if(RName == BookingList[i].Room && NName == BookingList[i].Name)
+                {
+                    bool end = false;
+                    while (end == false)
+                    {
+                        Console.WriteLine("Välj vilken del av bokningen du vill uppdatera");
+                        Console.WriteLine("1.Byt person bokningen står på\n2.Byt rum på bokningen\n3.Byt tid på bokningen\n4.klar");
+                        switch (int.Parse(Console.ReadLine()))
+                        {
+                            case 1:
+                                Console.WriteLine("Skriv nytt namn");
+                                string PName = Console.ReadLine();
+                                BookingList[i].Name = PName;
+                                break;
+                            case 2:
+                                Console.WriteLine("Skriv namnet på rummet");
+                                string NewRoomName = Console.ReadLine();
+                                bool found = false;
+                                for (int j = 0; j < Rooms.Count; j++)
+                                {
+                                    if(NewRoomName == Rooms[i].Roomscreated)
+                                    {
+                                        BookingList[i].Room = NewRoomName;
+                                        found = true;
+                                    }
+                                }
+                                if (found == false)
+                                {
+                                    Console.WriteLine($"Kunde inte hitta ett rum med namnet{NewRoomName}");
+                                }
+                                break;
+                            case 3:
+                                bool save = false;
+                                Console.WriteLine("Från vilket datum vill du boka salen/grupprummet?\nAnge i detta format År/Månad/Dag Timme:Minut");
+                                var fromdate = DateTime.TryParse(Console.ReadLine(), out DateTime from);
+                                if (fromdate == false)
+                                {
+                                    save = true;
+                                    Console.WriteLine("Felaktigt format, försök igen\nTryck enter för att gå tillbaka");
+                                    Console.ReadLine();
+                                    break;
+                                }
+
+                                Console.WriteLine("Hur länge önskar du boka?\nAnge i detta format År/Månad/Dag Timme:Minut");
+                                var todate = DateTime.TryParse(Console.ReadLine(), out DateTime to);
+                                if (todate == false)
+                                {
+                                    save = true;
+                                    Console.WriteLine("Felaktigt format, försök igen\nTryck valfri knapp för att gå tillbaka");
+                                    Console.ReadLine();
+                                    break;
+                                }
+                                TimeSpan length = to - from;
+                                if(save == false)
+                                {
+                                    BookingList[i].From = from;
+                                    BookingList[i].To = to;
+                                    BookingList[i].LengthOfBooking = length;
+                                }
+                                break;
+                            case 4:
+                                end = true;
+                                break;
+
+                        }
+                    }
+                }
+            }
         }
 
         // Metod för att ta bort bokningar. *Dennis gjort.
