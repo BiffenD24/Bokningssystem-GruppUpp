@@ -58,7 +58,7 @@ namespace Bokningssystem_GruppUpp
                 Console.WriteLine("Välkommen till att boka sal/grupprum");
                 // ber användaren skriva in sitt namn och sparar det i en string variabel
                 Console.WriteLine("Ange ditt namn");
-                string name = Console.ReadLine() ?? "";
+                string name = Console.ReadLine().ToLower() ?? "";
                 // kollar om strängen är tom eller null
                 if (string.IsNullOrEmpty(name))
                 {
@@ -143,11 +143,12 @@ namespace Bokningssystem_GruppUpp
             Console.Write("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
             Console.ReadKey();
         }     
-
+        //Metod för att uppdatera bokningar *Hannes gjort
         public static void UpdateBooking()
         {
             Console.WriteLine("Skriv namnet på rummet du vill uppdatera bokningen på");
             string RName = Console.ReadLine().ToLower();
+            Console.Clear();
             Console.WriteLine("Skriv namnet av personen på bokningen du vill uppdatera");
             string NName = Console.ReadLine().ToLower();
             for (int i = 0; i < BookingList.Count; i++)
@@ -157,25 +158,32 @@ namespace Bokningssystem_GruppUpp
                     bool end = false;
                     while (end == false)
                     {
+                        Console.Clear();
                         Console.WriteLine("Välj vilken del av bokningen du vill uppdatera");
                         Console.WriteLine("1.Byt person bokningen står på\n2.Byt rum på bokningen\n3.Byt tid på bokningen\n4.klar");
                         switch (int.Parse(Console.ReadLine()))
                         {
                             case 1:
-                                Console.WriteLine("Skriv nytt namn");
+                                Console.Clear();
+                                Console.WriteLine("Skriv personens namn som ska stå på bokningen");
                                 string PName = Console.ReadLine();
                                 BookingList[i].Name = PName;
+                                Console.WriteLine($"Namnet har Byts till {PName}\nTryck ENTER för att fortsätta");
+                                Console.ReadKey();
                                 break;
                             case 2:
-                                Console.WriteLine("Skriv namnet på rummet");
+                                Console.Clear();
+                                Console.WriteLine("Skriv namnet på rummet du vill byta till");
                                 string NewRoomName = Console.ReadLine();
                                 bool found = false;
                                 for (int j = 0; j < Rooms.Count; j++)
                                 {
-                                    if(NewRoomName == Rooms[i].Roomscreated)
+                                    if(NewRoomName == Rooms[j].Roomscreated)
                                     {
                                         BookingList[i].Room = NewRoomName;
                                         found = true;
+                                        Console.WriteLine($"Rummet har bytits till{NewRoomName}\nTryck ENTER för att fortsätta");
+                                        Console.ReadKey();
                                     }
                                 }
                                 if (found == false)
@@ -184,6 +192,7 @@ namespace Bokningssystem_GruppUpp
                                 }
                                 break;
                             case 3:
+                                Console.Clear();
                                 bool save = false;
                                 Console.WriteLine("Från vilket datum vill du boka salen/grupprummet?\nAnge i detta format År/Månad/Dag Timme:Minut");
                                 var fromdate = DateTime.TryParse(Console.ReadLine(), out DateTime from);
@@ -210,6 +219,8 @@ namespace Bokningssystem_GruppUpp
                                     BookingList[i].From = from;
                                     BookingList[i].To = to;
                                     BookingList[i].LengthOfBooking = length;
+                                    Console.WriteLine($"Tiden har ändrats till\n Från{from} till: {to}\n Längd på bokningen: {length}\nTryck enter för att gå tillbaka");
+                                    Console.ReadKey();
                                 }
                                 break;
                             case 4:
@@ -358,6 +369,20 @@ namespace Bokningssystem_GruppUpp
         public static void Deserialize()
         {
             Rooms = JsonSerializer.Deserialize<List<Local>>(File.ReadAllText("Rooms.json"));
+        }
+        //Metod för att skriva ut alla rum och deras egenskaper. *Hannes gjort
+        public static void PrintRooms()
+        {
+            if (Rooms.Count == 0)
+            {
+                Console.WriteLine("Det finns inga skapade Salar eller Grupprum");
+            }
+            foreach (Local s in Rooms)
+            {
+                Console.WriteLine($"Rum:{s.Roomscreated}\nMaxtid för bokning:{s.MaxTime}\nKapacitet:{s.Capacity}\n");
+            }
+            Console.WriteLine("Tryck ENTER för att fortsätta");
+            Console.ReadKey();
         }
     }
 

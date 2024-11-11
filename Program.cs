@@ -24,7 +24,7 @@ namespace Bokningssystem_GruppUpp
                 Console.SetCursorPosition(40, 3);
                 Console.Write("B = Lista bokningar från ett specifikt år.\n");
                 Console.SetCursorPosition(40, 4);
-                Console.Write("E = Lista alla salar med lämpliga egenskaper.\n");
+                Console.Write("E = Lista alla salar och grupprum med lämpliga egenskaper.\n");
                 Console.SetCursorPosition(40, 5);
                 Console.Write("L = Lista alla bokningar.\n");
                 Console.SetCursorPosition(40, 6);
@@ -47,7 +47,7 @@ namespace Bokningssystem_GruppUpp
                 else if (menuChoice == "E" || menuChoice == "e")
                 {
                     Console.Clear();
-                    //OBS Lägg in punkt 6 här. 
+                    Local.PrintRooms();
                 }
                 else if (menuChoice == "L" || menuChoice == "l")
                 {
