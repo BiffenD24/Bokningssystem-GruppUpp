@@ -47,5 +47,21 @@ namespace Bokningssystem_GruppUpp
                 hallList.Add(new(hallName, hallTime, hallCapacity));
             }
         }
+        public void ListAllHalls() 
+        {
+            if (hallList.Count == 0)
+            {
+                Console.WriteLine("Inga  salar har skapats än.");
+                return;
+            }
+            Console.Clear();
+            Console.WriteLine("Lista över alla salar:");
+            foreach (var hall in hallList)
+            {
+                Console.WriteLine($"Namn: {hall.Name}, Max bokningstid: {hall.MaxTime} timmar, Kapacitet: {hall.Capacity} personer");
+            }
+            Console.WriteLine("\nTryck valfri knapp för att fortsätta...");
+            Console.ReadKey();
+        }
     }
 }
