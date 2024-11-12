@@ -213,7 +213,7 @@ namespace Bokningssystem_GruppUpp
                                     Console.WriteLine($"Kunde inte hitta ett rum med namnet{NewRoomName}");
                                 }
                                 break;
-                            //case 3 byter tiden på bokningen /delar av koden har kopierats från NewBookable metoden vilket Dennis har gjort
+                            //case 3 byter tiden på bokningen /delar av case 3 koden har kopierats från NewBookable metoden vilket Dennis har gjort
                             case 3:
                                 Console.Clear();
                                 bool save = false;
