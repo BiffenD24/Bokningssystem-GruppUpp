@@ -89,7 +89,7 @@ namespace Bokningssystem_GruppUpp
                     GroupRoom group = new GroupRoom();
                     Console.Clear();
                     Console.WriteLine("Vill du boka Sal eller grupprum");
-                    switch (Console.ReadLine().ToLower() ?? "")
+                    switch (Console.ReadLine()??"".ToLower())
                     {
                         case "sal":
                             {
