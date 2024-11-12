@@ -57,7 +57,7 @@ namespace Bokningssystem_GruppUpp
                 else if (menuChoice == "1")
                 {
                     bool end = false;
-                    //en loop som körs tills man skapar en sal eller grupprum
+                    //En loop som körs tills man skapar en sal eller grupprum
                     while (end == false)
                     {
                         Console.Clear();
