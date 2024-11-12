@@ -85,14 +85,23 @@ namespace Bokningssystem_GruppUpp
                 }
                 else if (menuChoice == "3")
                 {
+                    Hall hall = new Hall();
+                    GroupRoom group = new GroupRoom();
                     Console.Clear();
-                    //Local.NewBookable();
-                    //Local hall = new Hall();
-
-                    //Hall hall = new Hall();
-                    //hall.NewBookable(""); 
-                    GroupRoom hall = new GroupRoom();
-                    hall.NewBookable("");
+                    Console.WriteLine("Vill du boka Sal eller grupprum");
+                    switch (Console.ReadLine().ToLower() ?? "")
+                    {
+                        case "sal":
+                            {
+                                hall.NewBookable("");
+                                break;
+                            }
+                        case "grupprum":
+                            {
+                                group.NewBookable("");
+                                break;
+                            }
+                    }
                 } 
                 else if (menuChoice == "4")
                 {

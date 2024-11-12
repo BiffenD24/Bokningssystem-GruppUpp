@@ -111,7 +111,7 @@ namespace Bokningssystem_GruppUpp
                 //}
 
                 // ber användaren ange sal eller grupprum och sparar det i en sträng
-                Console.WriteLine("Vilken grupprum vill du boka?");
+                Console.WriteLine("Vilket grupprum vill du boka?");
                 string room = Console.ReadLine().ToLower() ?? "";
                 // Kollar att rummet finns i listan 
 
