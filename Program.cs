@@ -22,39 +22,39 @@ namespace Bokningssystem_GruppUpp
                 Console.SetCursorPosition(50, 1);
                 Console.Write("VÄLJ ETT AV FÖLJANDE");
                 Console.SetCursorPosition(40, 3);
-                Console.Write("B = Lista bokningar från ett specifikt år.\n");
+                Console.Write("1 = Skapa ny sal eller grupprum.\n");
                 Console.SetCursorPosition(40, 4);
-                Console.Write("E = Lista alla salar och grupprum med lämpliga egenskaper.\n");
+                Console.Write("2 = Lista alla salar och grupprum med lämpliga egenskaper.\n");
                 Console.SetCursorPosition(40, 5);
-                Console.Write("L = Lista alla bokningar.\n");
+                Console.Write("3 = Skapa ny bokningar.\n");
                 Console.SetCursorPosition(40, 6);
-                Console.Write("N = Skapa ny sal eller grupprum.\n");
+                Console.Write("4 = Ta bort en bokning.\n");
                 Console.SetCursorPosition(40, 7);
-                Console.Write("S = Skapa ny bokningar.\n");
+                Console.Write("5 = Uppdatera en bokning.\n");
                 Console.SetCursorPosition(40, 8);
-                Console.Write("T = Ta bort en bokning.\n");
+                Console.Write("6 = Lista alla bokningar.\n");
                 Console.SetCursorPosition(40, 9);
-                Console.Write("U = Uppdatera en bokning.\n");
+                Console.Write("7 = Lista bokningar från ett specifikt år.\n");
                 Console.SetCursorPosition(40, 10);
-                Console.Write("X = Avsluta.");
+                Console.Write("X = Avsluta.\n");
                 menuChoice = Console.ReadLine();    
 
-                if (menuChoice == "B" || menuChoice == "b")
+                if (menuChoice == "7")
                 {
                     Console.Clear();
                     Local.SortByYear();  
                 }
-                else if (menuChoice == "E" || menuChoice == "e")
+                else if (menuChoice == "2")
                 {
                     Console.Clear();
                     Local.PrintRooms();
                 }
-                else if (menuChoice == "L" || menuChoice == "l")
+                else if (menuChoice == "6")
                 {
                     Console.Clear();
                     Hall.PrintBookings();
                 }
-                else if (menuChoice == "N" || menuChoice == "n")
+                else if (menuChoice == "1")
                 {
                     bool end = false;
                     //en loop som körs tills man skapar en sal eller grupprum
@@ -83,7 +83,7 @@ namespace Bokningssystem_GruppUpp
                         }
                     }
                 }
-                else if (menuChoice == "S" || menuChoice == "s")
+                else if (menuChoice == "3")
                 {
                     Console.Clear();
                     //Local.NewBookable();
@@ -92,12 +92,12 @@ namespace Bokningssystem_GruppUpp
                     Hall hall = new Hall();
                     hall.NewBookable("");
                 } 
-                else if (menuChoice == "T" || menuChoice == "t")
+                else if (menuChoice == "4")
                 {
                     Console.Clear();
                     Local.RemoveBooking(); 
                 }
-                else if (menuChoice == "U" || menuChoice == "u") 
+                else if (menuChoice == "5") 
                 {
                     Console.Clear();
                     Local.UpdateBooking(); 
