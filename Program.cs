@@ -16,7 +16,7 @@ namespace Bokningssystem_GruppUpp
             bool quitBooking = false;
 
             //Menval *Moses gjort
-            while (quitBooking != true)
+            while (quitBooking != true) 
             {
                 Console.Clear();
                 Console.SetCursorPosition(50, 1);
@@ -36,7 +36,7 @@ namespace Bokningssystem_GruppUpp
                 Console.SetCursorPosition(40, 9);
                 Console.Write("U = Uppdatera en bokning.\n");
                 Console.SetCursorPosition(40, 10);
-                Console.Write("X = Avsluta.\n");
+                Console.Write("X = Avsluta.");
                 menuChoice = Console.ReadLine();    
 
                 if (menuChoice == "B" || menuChoice == "b")
@@ -93,10 +93,10 @@ namespace Bokningssystem_GruppUpp
                     Console.Clear();
                     Local.RemoveBooking(); 
                 }
-                else if (menuChoice == "U" || menuChoice == "u")
+                else if (menuChoice == "U" || menuChoice == "u") 
                 {
-                    Console.Clear();
-                    Local.UpdateBooking(); 
+                    Console.Clear();   
+                    //BookingManager.UpdateBooking();   
                 }
                 else if (menuChoice == "X" || menuChoice == "x")
                 {
