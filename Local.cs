@@ -145,12 +145,12 @@ namespace Bokningssystem_GruppUpp
             Console.ReadKey();
         }
 
-        //public static void UpdateBooking()
-        //{
+        public static void UpdateBooking()
+        {
 
-        //    throw new NotImplementedException();
+            throw new NotImplementedException();
 
-        //}
+        }
 
         // Metod för att ta bort bokningar. *Dennis gjort.
         public static void RemoveBooking()
