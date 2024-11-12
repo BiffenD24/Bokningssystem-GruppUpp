@@ -9,7 +9,7 @@ namespace Bokningssystem_GruppUpp
 {
     internal class GroupRoom :Local
     {
-        //9.skapar ett nytt Grupprum *Hannes gjort
+        //9.metod som skapar ett nytt Grupprum *Hannes gjort
         public static void NewGroupRoom()
         {
             while (true)

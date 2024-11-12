@@ -59,7 +59,7 @@ namespace Bokningssystem_GruppUpp
                 Console.WriteLine("Välkommen till att boka sal/grupprum");
                 // ber användaren skriva in sitt namn och sparar det i en string variabel
                 Console.WriteLine("Ange ditt namn");
-                string name = Console.ReadLine() ?? "";
+                string name = Console.ReadLine().ToLower() ?? "";
                 // kollar om strängen är tom eller null
                 if (string.IsNullOrEmpty(name))
                 {
@@ -71,7 +71,7 @@ namespace Bokningssystem_GruppUpp
 
                 // ber användaren ange sal eller grupprum och sparar det i en sträng
                 Console.WriteLine("Vilken sal/grupprum vill du boka?");
-                string room = Console.ReadLine() ?? "";
+                string room = Console.ReadLine().ToLower() ?? "";
                 // Kollar att rummet finns i listan 
 
                 var roomFound = Rooms.FirstOrDefault(a => a.Roomscreated == room); 
@@ -147,7 +147,134 @@ namespace Bokningssystem_GruppUpp
         //Metod för att uppdatera bokningar *Hannes gjort
         public static void UpdateBooking()
         {
-            throw new NotImplementedException();
+            //ber användaren skriva in rummet och namnet på bokningen som ska uppdateras
+            Console.WriteLine("Skriv namnet på rummet du vill uppdatera bokningen på");
+            string RName = Console.ReadLine().ToLower();
+
+            Console.Clear();
+            Console.WriteLine("Skriv namnet av personen på bokningen du vill uppdatera");
+            string NName = Console.ReadLine().ToLower();
+
+            //kollar om rummet och namnet finns i listan
+            for (int i = 0; i < BookingList.Count; i++)
+            {
+                //om rummet och namnet finns i listan kommer användaren få välja vad den vill uppdatera
+                if (RName == BookingList[i].Room && NName == BookingList[i].Name)
+                {
+                    bool end = false;
+                    //loop som körs tills användaren är klar
+                    while (end == false)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Välj vilken del av bokningen du vill uppdatera");
+                        Console.WriteLine("1.Byt person bokningen står på\n2.Byt rum på bokningen\n3.Byt tid på bokningen\n4.klar");
+
+                        switch (int.Parse(Console.ReadLine()))
+                        {
+                            //case 1 byter namnet på bokningen
+                            case 1:
+                                Console.Clear();
+                                //ber användaren skriva in namnet som ska stå på bokningen
+                                Console.WriteLine("Skriv personens namn som ska stå på bokningen");
+                                string PName = Console.ReadLine();
+
+                                //byter namnet på bokningen
+                                BookingList[i].Name = PName;
+                                //skriver ut att namnet har bytts
+                                Console.WriteLine($"Namnet har Byts till {PName}\nTryck ENTER för att fortsätta");
+                                Console.ReadKey();
+                                break;
+                            //case 2 byter rummet på bokningen
+                            case 2:
+                                Console.Clear();
+                                //ber användaren skriva in rummet som bokningen ska bytas till
+                                Console.WriteLine("Skriv namnet på rummet du vill byta till");
+                                string NewRoomName = Console.ReadLine();
+
+                                bool found = false;
+                                //kollar om rummet finns i listan
+                                for (int j = 0; j < Rooms.Count; j++)
+                                {
+                                    //om rummet finns i listan kommer rummet bytas
+                                    if (NewRoomName == Rooms[j].Roomscreated)
+                                    {
+                                        //byter rummet
+                                        BookingList[i].Room = NewRoomName;
+                                        //skriver ut att rummet har bytts
+                                        found = true;
+                                        Console.WriteLine($"Rummet har bytits till{NewRoomName}\nTryck ENTER för att fortsätta");
+                                        Console.ReadKey();
+                                    }
+                                }
+                                //om rummet inte finns i listan kommer användaren få ett felmeddelande
+                                if (found == false)
+                                {
+                                    Console.WriteLine($"Kunde inte hitta ett rum med namnet{NewRoomName}");
+                                }
+                                break;
+                            //case 3 byter tiden på bokningen /delar av koden har kopierats från NewBookable metoden vilket Dennis har gjort
+                            case 3:
+                                Console.Clear();
+                                bool save = false;
+                                //frågar användaren vilken tid bokningen ska vara
+                                Console.WriteLine("Från vilket datum vill du boka salen/grupprummet?\nAnge i detta format År/Månad/Dag Timme:Minut");
+
+                                //sparar det i en bool variabel och försöker parsa inputen. Om parsningen lyckas kommer den skicka ut Datetime from.
+                                var fromdate = DateTime.TryParse(Console.ReadLine(), out DateTime from);
+                                if (fromdate == false)
+                                {
+                                    save = true;
+                                    Console.WriteLine("Felaktigt format, försök igen\nTryck enter för att gå tillbaka");
+                                    Console.ReadLine();
+                                    break;
+                                }
+
+                                //frågar användaren hur länge bokningen ska vara
+                                Console.WriteLine("Hur länge önskar du boka?\nAnge i detta format År/Månad/Dag Timme:Minut");
+                                //sparar det i en bool variabel och försöker parsa inputen. Om parsningen lyckas kommer den skicka ut Datetime from.
+                                var todate = DateTime.TryParse(Console.ReadLine(), out DateTime to);
+
+                                if (todate == false)
+                                {
+                                    save = true;
+                                    Console.WriteLine("Felaktigt format, försök igen\nTryck valfri knapp för att gå tillbaka");
+                                    Console.ReadLine();
+                                    break;
+                                }
+
+                                //beräknar längden på bokningen och sparar det.
+                                TimeSpan length = to - from;
+
+                                //kollar om rummet är ledigt
+                                if (BookingList.Any(b => b.Room == BookingList[i].Room && (from < b.To && to > b.From)))
+                                {
+                                    Console.WriteLine("Rummet är inte tillgänglig den tiden \nTryck ENTER för att fortsätta");
+                                    Console.ReadKey();
+                                    save = true;
+                                    break;
+                                }
+
+                                //om rummet är ledigt eller inget annat del uptäkts kommer tiden att bytas
+                                if (save == false)
+                                {
+                                    //byter tiden på bokningen
+                                    BookingList[i].From = from;
+                                    BookingList[i].To = to;
+                                    BookingList[i].LengthOfBooking = length;
+                                    //skriver ut att tiden har bytts
+                                    Console.WriteLine($"Tiden har ändrats till\n Från{from} till: {to}\n Längd på bokningen: {length}\nTryck enter för att gå tillbaka");
+                                    Console.ReadKey();
+                                }
+                                break;
+                            //case 4 avslutar loopen
+                            case 4:
+                                end = true;
+                                break;
+
+                        }
+                    }
+                }
+            }
         }
 
         // Metod för att ta bort bokningar. *Dennis gjort.
@@ -161,11 +288,11 @@ namespace Bokningssystem_GruppUpp
                 // Ber användaren ange namn och sparar det i en sträng
                 Console.WriteLine("Vilken bokning vill du ta bort?");
                 Console.WriteLine("Ange namn som du bokat med");
-                String? name = Console.ReadLine() ?? "";
+                String? name = Console.ReadLine().ToLower() ?? "";
 
                 // ber användaren ange vilken sal den bokat och sparar det i en sträng
-                Console.WriteLine("Ange vilken sal du bokat");
-                String? room = Console.ReadLine() ?? "";
+                Console.WriteLine("Ange vilken sal/grupprum du bokat");
+                String? room = Console.ReadLine().ToLower() ?? "";
 
                 // ber användaren ange från vilken tid man bokat och i vilket format det ska vara
                 Console.WriteLine("Från vilken tid har du bokat? Ange År/Månad/Dag Timme/Minut");
@@ -312,6 +439,22 @@ namespace Bokningssystem_GruppUpp
         public static void Deserialize()
         {
             Rooms = JsonSerializer.Deserialize<List<Local>>(File.ReadAllText("Rooms.json"));
+        }
+        //Metod för att skriva ut alla rum och deras egenskaper. *Hannes gjort
+        public static void PrintRooms()
+        {
+            //if sats som kollar om rum har blivit skapade och ger ett medelande om inga existerar.
+            if (Rooms.Count == 0)
+            {
+                Console.WriteLine("Det finns inga skapade Salar eller Grupprum");
+            }
+            //skriver ut alla rum och deras egenskaper
+            foreach (Local s in Rooms)
+            {
+                Console.WriteLine($"Rum:{s.Roomscreated}\nMaxtid för bokning:{s.MaxTime}\nKapacitet:{s.Capacity}\n");
+            }
+            Console.WriteLine("Tryck ENTER för att fortsätta");
+            Console.ReadKey();
         }
     }
 
