@@ -57,7 +57,7 @@ namespace Bokningssystem_GruppUpp
             {
                 Console.Clear();           
                 // välkommnar användaren
-                Console.WriteLine("Välkommen till att boka sal/grupprum");
+                Console.WriteLine("Välkommen till bokningssystem");
 
                 // ber användaren skriva in sitt namn och sparar det i en string variabel
                 Console.WriteLine("Ange ditt namn");
