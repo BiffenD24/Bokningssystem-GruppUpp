@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bokningssystem_GruppUpp
 {
+    //Mohamed har gjort/går inte att använda
     internal class Booking
     {
         public int BookingId { get; set; }

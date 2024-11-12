@@ -144,6 +144,7 @@ namespace Bokningssystem_GruppUpp
             Console.Write("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
             Console.ReadKey();
         }
+
         //Metod för att uppdatera bokningar *Hannes gjort
         public static void UpdateBooking()
         {
@@ -435,11 +436,13 @@ namespace Bokningssystem_GruppUpp
                 return double.TryParse(userInput, out numberHandler);
             }
         }
+
         //Metod som tar all text i json filen och deserialiserar den till en lista. *Hannes gjort.
         public static void Deserialize()
         {
             Rooms = JsonSerializer.Deserialize<List<Local>>(File.ReadAllText("Rooms.json"));
         }
+
         //Metod för att skriva ut alla rum och deras egenskaper. *Hannes gjort
         public static void PrintRooms()
         {

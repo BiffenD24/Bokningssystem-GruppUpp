@@ -8,6 +8,7 @@ namespace Bokningssystem_GruppUpp
 {
     internal class BookingManager
     {
+        //Mohamed har gjort/går inte att använda
         private List<Booking> bookings;
 
         public BookingManager()
