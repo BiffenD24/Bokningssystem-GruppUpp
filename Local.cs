@@ -142,7 +142,7 @@ namespace Bokningssystem_GruppUpp
             }
             Console.Write("\n\n\t\t\tTryck valfri knapp för att fortsätta...");
             Console.ReadKey();
-        }     
+        }
         //Metod för att uppdatera bokningar *Hannes gjort
         public static void UpdateBooking()
         {
