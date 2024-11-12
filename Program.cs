@@ -95,8 +95,8 @@ namespace Bokningssystem_GruppUpp
                 }
                 else if (menuChoice == "U" || menuChoice == "u") 
                 {
-                    Console.Clear();   
-                    //BookingManager.UpdateBooking();   
+                    Console.Clear();
+                    Local.UpdateBooking(); 
                 }
                 else if (menuChoice == "X" || menuChoice == "x")
                 {
