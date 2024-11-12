@@ -49,7 +49,7 @@ namespace Bokningssystem_GruppUpp
         }
 
         // Metod för att göra ny bokning * Dennis gjort
-        public virtual void NewBookable(string name)
+        public virtual void NewBookable()
         {
             bool Null = false;
             // loop för att hålla igång programmet tills användaren har angivit rätt uppgifter
@@ -61,7 +61,8 @@ namespace Bokningssystem_GruppUpp
 
                 // ber användaren skriva in sitt namn och sparar det i en string variabel
                 Console.WriteLine("Ange ditt namn");
-                name = Console.ReadLine()?? "".ToLower();
+                string name = Console.ReadLine()?? "".ToLower();
+                Name = name;
                 // kollar om strängen är tom eller null
                 if (string.IsNullOrEmpty(name))
                 {
@@ -74,7 +75,7 @@ namespace Bokningssystem_GruppUpp
                 else if (name is not null) 
                 {
                     Null = true;
-
+                    Name = name;
                 }
             }
         }

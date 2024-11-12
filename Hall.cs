@@ -77,9 +77,9 @@ namespace Bokningssystem_GruppUpp
             
         }
 
-        public override void NewBookable(string name)
+        public override void NewBookable()
         {
-            base.NewBookable(name);
+            base.NewBookable();
             while (true)
             {
                 Console.Clear();
@@ -87,8 +87,8 @@ namespace Bokningssystem_GruppUpp
                 // ber användaren ange sal eller grupprum och sparar det i en sträng
                 Console.WriteLine("Vilken sal vill du boka?");
                 string? room = Console.ReadLine() ?? "".ToLower();
+                Room = room;
                 // Kollar att rummet finns i listan 
-
                 var roomFound = Rooms.FirstOrDefault(a => a.Roomscreated == room);
 
                 // om variabeln är null kommer användaren få ett felmeddelande och börja om
@@ -104,6 +104,7 @@ namespace Bokningssystem_GruppUpp
                 Console.WriteLine("Från vilket datum vill du boka salen?\nAnge i detta format År/Månad/Dag Timme:Minut");
                 // sparar det i en bool variabel och försöker parsa inputen. Om parsningen lyckas kommer den skicka ut Datetime from.
                 var fromdate = DateTime.TryParse(Console.ReadLine(), out DateTime from);
+                From = from;
                 // om parsningen inte lyckas kommer bool bli false och användaren kommer få ett felmeddelande och få börja om
                 if (fromdate == false)
                 {
@@ -115,6 +116,7 @@ namespace Bokningssystem_GruppUpp
                 // ber användaren att ange längden på bokningen och sparar det i en bool
                 Console.WriteLine("Hur länge önskar du boka?\nAnge i detta format År/Månad/Dag Timme:Minut");
                 var todate = DateTime.TryParse(Console.ReadLine(), out DateTime to);
+                To = to;
                 // om parsningen inte går igenom kommer bool bli false och användaren får ett felmeddelande och får börja om
                 if (todate == false)
                 {
@@ -124,7 +126,7 @@ namespace Bokningssystem_GruppUpp
                 }
                 // beräknar längden på bokningen och sparar det.
                 TimeSpan length = to - from;
-
+                LengthOfBooking = length;
                 // if-sats för att kolla om det redan finns en bokning på samma rum och tid. Om det finns det kommer användaren få ett felmeddelande och börja om bokningen
                 if (BookingList.Any(b => b.Room == room && (from < b.To && to > b.From)))
                 {
@@ -136,7 +138,7 @@ namespace Bokningssystem_GruppUpp
                 else
                 {
                     // Lägger till i listan för bokningar
-                    BookingList.Add(new Local(name, room, from, to, length));
+                    BookingList.Add(this);
                     // skriver ut när man bokat
                     Console.WriteLine($"Sal: {room} är bokat från: {from} till: {to}\n Längd på bokningen: {length}\nTryck enter för att gå tillbaka");
                     Console.ReadLine();

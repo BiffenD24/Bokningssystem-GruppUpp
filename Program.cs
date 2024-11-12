@@ -93,12 +93,12 @@ namespace Bokningssystem_GruppUpp
                     {
                         case "sal":
                             {
-                                hall.NewBookable("");
+                                hall.NewBookable();
                                 break;
                             }
                         case "grupprum":
                             {
-                                group.NewBookable("");
+                                group.NewBookable();
                                 break;
                             }
                     }
