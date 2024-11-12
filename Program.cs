@@ -62,7 +62,7 @@ namespace Bokningssystem_GruppUpp
                     {
                         Console.Clear();
                         Console.WriteLine("Vill du skapa en Sal eller ett Grupprum");
-                        string choice = Console.ReadLine().ToLower();
+                        string choice = Console.ReadLine() ?? "".ToLower();
                         if (choice == "sal")
                         {
                             Console.Clear();

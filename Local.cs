@@ -61,7 +61,7 @@ namespace Bokningssystem_GruppUpp
 
                 // ber användaren skriva in sitt namn och sparar det i en string variabel
                 Console.WriteLine("Ange ditt namn");
-                name = Console.ReadLine().ToLower() ?? "";
+                name = Console.ReadLine()?? "".ToLower();
                 // kollar om strängen är tom eller null
                 if (string.IsNullOrEmpty(name))
                 {
@@ -196,11 +196,11 @@ namespace Bokningssystem_GruppUpp
         {
             //ber användaren skriva in rummet och namnet på bokningen som ska uppdateras
             Console.WriteLine("Skriv namnet på rummet du vill uppdatera bokningen på");
-            string RName = Console.ReadLine().ToLower();
+            string RName = Console.ReadLine() ?? "".ToLower();
 
             Console.Clear();
             Console.WriteLine("Skriv namnet av personen på bokningen du vill uppdatera");
-            string NName = Console.ReadLine().ToLower();
+            string NName = Console.ReadLine() ?? "".ToLower();
 
             //kollar om rummet och namnet finns i listan
             for (int i = 0; i < BookingList.Count; i++)
@@ -216,14 +216,14 @@ namespace Bokningssystem_GruppUpp
                         Console.WriteLine("Välj vilken del av bokningen du vill uppdatera");
                         Console.WriteLine("1.Byt person bokningen står på\n2.Byt rum på bokningen\n3.Byt tid på bokningen\n4.klar");
 
-                        switch (int.Parse(Console.ReadLine()))
+                        switch (int.Parse(Console.ReadLine() ?? ""))
                         {
                             //case 1 byter namnet på bokningen
                             case 1:
                                 Console.Clear();
                                 //ber användaren skriva in namnet som ska stå på bokningen
                                 Console.WriteLine("Skriv personens namn som ska stå på bokningen");
-                                string PName = Console.ReadLine();
+                                string PName = Console.ReadLine() ?? "";
 
                                 //byter namnet på bokningen
                                 BookingList[i].Name = PName;
@@ -236,7 +236,7 @@ namespace Bokningssystem_GruppUpp
                                 Console.Clear();
                                 //ber användaren skriva in rummet som bokningen ska bytas till
                                 Console.WriteLine("Skriv namnet på rummet du vill byta till");
-                                string NewRoomName = Console.ReadLine();
+                                string NewRoomName = Console.ReadLine() ?? "";
 
                                 bool found = false;
                                 //kollar om rummet finns i listan
@@ -335,11 +335,11 @@ namespace Bokningssystem_GruppUpp
                 // Ber användaren ange namn och sparar det i en sträng
                 Console.WriteLine("Vilken bokning vill du ta bort?");
                 Console.WriteLine("Ange namn som du bokat med");
-                String? name = Console.ReadLine().ToLower() ?? "";
+                String? name = Console.ReadLine() ?? "".ToLower();
 
                 // ber användaren ange vilken sal den bokat och sparar det i en sträng
                 Console.WriteLine("Ange vilken sal/grupprum du bokat");
-                String? room = Console.ReadLine().ToLower() ?? "";
+                String? room = Console.ReadLine() ?? "".ToLower();
 
                 // ber användaren ange från vilken tid man bokat och i vilket format det ska vara
                 Console.WriteLine("Från vilken tid har du bokat? Ange År/Månad/Dag Timme/Minut");
@@ -411,7 +411,7 @@ namespace Bokningssystem_GruppUpp
             while (searchYear != true)
             { 
                 Console.Write("Ange bokningsår. Obs! Endast år t.ex 2022: ");
-                string? stringYearToSearch = Console.ReadLine();
+                string? stringYearToSearch = Console.ReadLine() ?? "";
                 bool isEmpty = !BookingList.Any(); //Kolla om bokningslistan är tom.
              
                 if (IfNotANumber(stringYearToSearch))
@@ -505,12 +505,7 @@ namespace Bokningssystem_GruppUpp
             Console.WriteLine("Tryck ENTER för att fortsätta");
             Console.ReadKey();
         }
-    }
-
-
-
-
-    
+    }   
 
 }
 

@@ -16,7 +16,7 @@ namespace Bokningssystem_GruppUpp
             {
                 //Ber användaren skriva in namnet för Grupprummet och sparar det i en string
                 Console.WriteLine("Skriv Namnet av Grupprummet du vill skapa");
-                string roomName = Console.ReadLine().ToLower();
+                string roomName = Console.ReadLine() ?? "".ToLower();
                 // Kollar om stringen är tom eller null och ger felmedelande och användaren får börja om, om sant
                 if (string.IsNullOrEmpty(roomName))
                 {
@@ -41,7 +41,7 @@ namespace Bokningssystem_GruppUpp
                     continue;
                 }
                 Console.WriteLine("Skriv in den maximala tiden du får boka det hära Grupprummet");
-                string roomTstr = Console.ReadLine();
+                string roomTstr = Console.ReadLine() ?? "";
                 // Kollar om stringen är tom eller null och ger felmedelande och användaren får börja om, om sant
                 if (string.IsNullOrEmpty(roomTstr))
                 {
@@ -53,7 +53,7 @@ namespace Bokningssystem_GruppUpp
                 double roomTime = double.Parse(roomTstr);
 
                 Console.WriteLine("Skriv in den mängd personer som får plats i Grupprummet");
-                string roomCstr = Console.ReadLine();
+                string roomCstr = Console.ReadLine() ?? "";
                 // Kollar om stringen är tom eller null och ger felmedelande och användaren får börja om, om sant
                 if (string.IsNullOrEmpty(roomTstr))
                 {
