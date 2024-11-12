@@ -26,7 +26,7 @@ namespace Bokningssystem_GruppUpp
                 Console.SetCursorPosition(40, 4);
                 Console.Write("2 = Lista alla salar och grupprum med lämpliga egenskaper.\n");
                 Console.SetCursorPosition(40, 5);
-                Console.Write("3 = Skapa ny bokningar.\n");
+                Console.Write("3 = Skapa ny bokning.\n");
                 Console.SetCursorPosition(40, 6);
                 Console.Write("4 = Ta bort en bokning.\n");
                 Console.SetCursorPosition(40, 7);
