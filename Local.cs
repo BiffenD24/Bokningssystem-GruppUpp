@@ -147,9 +147,7 @@ namespace Bokningssystem_GruppUpp
 
         public static void UpdateBooking()
         {
-
             throw new NotImplementedException();
-
         }
 
         // Metod för att ta bort bokningar. *Dennis gjort.
