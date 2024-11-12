@@ -89,7 +89,9 @@ namespace Bokningssystem_GruppUpp
                     //Local.NewBookable();
                     //Local hall = new Hall();
 
-                    Hall hall = new Hall();
+                    //Hall hall = new Hall();
+                    //hall.NewBookable(""); 
+                    GroupRoom hall = new GroupRoom();
                     hall.NewBookable("");
                 } 
                 else if (menuChoice == "4")
