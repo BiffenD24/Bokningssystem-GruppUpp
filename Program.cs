@@ -52,7 +52,7 @@ namespace Bokningssystem_GruppUpp
                 else if (menuChoice == "L" || menuChoice == "l")
                 {
                     Console.Clear();
-                    Local.PrintBookings();   
+                    Hall.PrintBookings();
                 }
                 else if (menuChoice == "N" || menuChoice == "n")
                 {
@@ -86,7 +86,11 @@ namespace Bokningssystem_GruppUpp
                 else if (menuChoice == "S" || menuChoice == "s")
                 {
                     Console.Clear();
-                    Local.NewBookable();
+                    //Local.NewBookable();
+                    //Local hall = new Hall();
+
+                    Hall hall = new Hall();
+                    hall.NewBookable("");
                 } 
                 else if (menuChoice == "T" || menuChoice == "t")
                 {
