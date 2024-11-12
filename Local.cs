@@ -70,7 +70,7 @@ namespace Bokningssystem_GruppUpp
 
                 // ber användaren ange sal eller grupprum och sparar det i en sträng
                 Console.WriteLine("Vilken sal/grupprum vill du boka?");
-                string room = Console.ReadLine() ?? "";
+                string room = Console.ReadLine().ToLower() ?? "";
                 // Kollar att rummet finns i listan 
 
                 var roomFound = Rooms.FirstOrDefault(a => a.Roomscreated == room); 
@@ -287,11 +287,11 @@ namespace Bokningssystem_GruppUpp
                 // Ber användaren ange namn och sparar det i en sträng
                 Console.WriteLine("Vilken bokning vill du ta bort?");
                 Console.WriteLine("Ange namn som du bokat med");
-                String? name = Console.ReadLine() ?? "";
+                String? name = Console.ReadLine().ToLower() ?? "";
 
                 // ber användaren ange vilken sal den bokat och sparar det i en sträng
-                Console.WriteLine("Ange vilken sal du bokat");
-                String? room = Console.ReadLine() ?? "";
+                Console.WriteLine("Ange vilken sal/grupprum du bokat");
+                String? room = Console.ReadLine().ToLower() ?? "";
 
                 // ber användaren ange från vilken tid man bokat och i vilket format det ska vara
                 Console.WriteLine("Från vilken tid har du bokat? Ange År/Månad/Dag Timme/Minut");
