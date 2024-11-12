@@ -80,35 +80,6 @@ namespace Bokningssystem_GruppUpp
             while (true)
             {
                 Console.Clear();
-                // välkommnar användaren
-                //Console.WriteLine("Välkommen till att boka sal/grupprum");
-                //Console.WriteLine("1 = hall \n 2 = grupprum");
-
-                //string? roomChoice = Console.ReadLine();
-                //switch (roomChoice) 
-                //{
-                //    case "1": 
-                //        break;
-
-                //    case "2":
-                //        break;
-
-                //}
-
-
-
-
-                // ber användaren skriva in sitt namn och sparar det i en string variabel
-                //Console.WriteLine("Ange ditt namn");
-                //string name = Console.ReadLine().ToLower() ?? "";
-                //// kollar om strängen är tom eller null
-                //if (string.IsNullOrEmpty(name))
-                //{
-                //    // om den är null eller tom kommer det skrivas ut ett felmeddelande och användaren får börja om
-                //    Console.WriteLine("Felaktigt svar, försök igen\nTryck valfri knapp för att gå tillbaka");
-                //    Console.ReadLine();
-                //    continue; 
-                //}
 
                 // ber användaren ange sal eller grupprum och sparar det i en sträng
                 Console.WriteLine("Vilket grupprum vill du boka?");
